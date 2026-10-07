@@ -7,6 +7,14 @@ local ROOT = arg[0]:match("^(.*)/[^/]+$") or "."
 local PORT = tonumber(arg[1]) or tonumber(os.getenv("PORT") or "") or 8080
 local MAX_BODY = 8 * 1024 * 1024
 local DJPEG = ROOT .. "/local/usr/bin/djpeg"
+do
+  local probe = io.open(DJPEG, "r")
+  if probe then
+    probe:close()
+  else
+    DJPEG = "djpeg"
+  end
+end
 
 local STYLE = [[
 <style>
