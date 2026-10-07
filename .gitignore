@@ -1,0 +1,5 @@
+local/
+debs/
+*.swp
+*.log
+nohup.out
